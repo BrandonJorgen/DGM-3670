@@ -1,0 +1,63 @@
+//Main body
+polySphere -r 2 -sx 20 -sy 20 -ax 0 2 0 -cuv 2 -ch 1;
+polySphere -r 1.5 -sx 20 -sy 20 -ax 0 2 0 -cuv 2 -ch 1;
+polySphere -r 1 -sx 20 -sy 20 -ax 0 2 0 -cuv 2 -ch 1;
+
+//Main body settings
+move -r -os -wd 0 2 0 "pSphere1";
+move -r -os -wd 0 4.5 0 "pSphere2";
+move -r -os -wd 0 6.5 0 "pSphere3";
+
+//Face features
+polySphere -r 0.1 -sx 6 -sy 6 -ax 0 2 0 -cuv 2 -ch 1;
+polySphere -r 0.1 -sx 6 -sy 6 -ax 0 2 0 -cuv 2 -ch 1;
+polyCone -r 1 -h 2 -sx 20 -sy 1 -sz 0 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+
+//right eye settings
+move -r -os -wd -0.2 6.75 0.95 "pSphere4";
+rotate -r -os -fo 90 0 0 "pSphere4";
+
+//left eye settings
+move -r -os -wd 0.2 6.75 0.95 "pSphere5";
+rotate -r -os -fo 90 0 0 "pSphere5";
+
+//nose settings
+move -r -os -wd 0 6.5 1.4 "pCone1";
+rotate -r -os -fo 90 0 0 "pCone1";
+scale -r 0.1 0.475 0.1 "pCone1";
+
+//Chest features
+polySphere -r 0.15 -sx 10 -sy 10 -ax 0 1 0 -cuv 2 -ch 1;
+polySphere -r 0.15 -sx 10 -sy 10 -ax 0 1 0 -cuv 2 -ch 1;
+polySphere -r 0.15 -sx 10 -sy 10 -ax 0 1 0 -cuv 2 -ch 1;
+polySphere -r 0.15 -sx 10 -sy 10 -ax 0 1 0 -cuv 2 -ch 1;
+polySphere -r 0.15 -sx 10 -sy 10 -ax 0 1 0 -cuv 2 -ch 1;
+polyCylinder -r 0.1 -h 2.5 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1;
+polyCylinder -r 0.1 -h 2.5 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1;
+
+//Chest dot settings
+move -r -os -wd 0 5.3 1.2 "pSphere6";
+rotate -r -os -fo 60 0 0 "pSphere6";
+move -r -os -wd 0 4.7 1.4 "pSphere7";
+rotate -r -os -fo 90 0 0 "pSphere7";
+move -r -os -wd 0 4 1.35 "pSphere8";
+rotate -r -os -fo 113 0 0 "pSphere8";
+move -r -os -wd 0 3.323 1.418 "pSphere9";
+rotate -r -os -fo 51 0 0 "pSphere9";
+move -r -os -wd 0 2.7 1.8 "pSphere10";
+rotate -r -os -fo 70 0 0 "pSphere10";
+
+//Arm settings
+move -r -os -wd 2.4 5.5 0 "pCylinder1";
+rotate -r -os -fo 0 0 -53 "pCylinder1";
+move -r -os -wd -2.4 5.5 0 "pCylinder2";
+rotate -r -os -fo 0 0 53 "pCylinder2";
+
+//Hat feature
+polyCylinder -r 0.85 -h 1.2 -sx 20 -sy 2 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+
+//Hat settings
+move -r -os -wd 0 7.78 0 "pCylinder3";
+move -r 0 -0.497605 0 "pCylinder3.e[20:39]";
+polyExtrudeFacet -constructionHistory 1 -keepFacesTogether 1 -pvx -8.940696716e-08 -pvy 7.231118525 -pvz -1.490116119e-07 -divisions 1 -twist 0 -taper 1 -off 0 -thickness 0 -smoothingAngle 30 pCylinder3.f[0:19];
+setAttr "polyExtrudeFace1.localTranslate" -type double3 0 0 0.25276 ;
