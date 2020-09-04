@@ -1,0 +1,157 @@
+{
+	string $allGeo[] = {};
+	string $dumpArray[] = {};
+	
+	if(!objExists("Spider"))
+	{
+		//Main Body Parts
+		$dumpArray = `polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polySphere -r 0.5 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+
+		//Main body Part Transformations
+		move -r -os -wd 0 1.25 0 "pSphere1";
+		rotate -r -os -fo 90 0 0 "pSphere1";
+		move -r -os -wd 0 1 1 "pSphere2";
+		rotate -r -os -fo 90 0 0 "pSphere2";
+		
+		//Left Leg Middle
+		$dumpArray = `polyCylinder -r 0.05 -h 1 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polyCylinder -r 0.05 -h 1 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polyCylinder -r 0.05 -h 0.35 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		
+		//Left Leg Middle Transformations
+		move -r -os -wd 1.1 1.1 0 "pCylinder1";
+		rotate -r -os -fo 0 0 120 "pCylinder1";
+		move -r -os -wd 1.85 0.9 0 "pCylinder2";
+		rotate -r -os -fo 0 0 210 "pCylinder2";
+		move -r -os -wd 2.115 0.222 0 "pCylinder3";
+		
+		//Left Leg Front
+		$dumpArray = `polyCylinder -r 0.05 -h 1 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polyCylinder -r 0.05 -h 1 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polyCylinder -r 0.05 -h 0.35 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		
+		//Left Leg Front Transformations
+		move -r -os -wd 1.1 1.1 0.4 "pCylinder4";
+		rotate -r -os -fo -30 0 120 "pCylinder4";
+		move -r -os -wd 1.772 0.88 0.842 "pCylinder5";
+		rotate -r -os -fo 17.538 0.866 210.29 "pCylinder5";
+		move -r -os -wd 2.03 0.222 0.995 "pCylinder6";
+		
+		//Left Leg Back
+		$dumpArray = `polyCylinder -r 0.05 -h 1 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polyCylinder -r 0.05 -h 1 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polyCylinder -r 0.05 -h 0.35 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		
+		//Left Leg Back Transformations
+		move -r -os -wd 1.1 1.1 -0.446 "pCylinder7";
+		rotate -r -os -fo 30 0 120 "pCylinder7";
+		move -r -os -wd 1.783 0.89 -0.892 "pCylinder8";
+		rotate -r -os -fo -19.175 -22.405 218.603 "pCylinder8";
+		move -r -os -wd 2.061 0.222 -1.058 "pCylinder9";
+		
+		//Right Leg Middle
+		$dumpArray = `polyCylinder -r 0.05 -h 1 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polyCylinder -r 0.05 -h 1 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polyCylinder -r 0.05 -h 0.35 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		
+		//Right Leg Middle Transformations
+		move -r -os -wd -1.1 1.1 0 "pCylinder10";
+		rotate -r -os -fo 180 0 60 "pCylinder10";
+		move -r -os -wd -1.85 0.9 0 "pCylinder11";
+		rotate -r -os -fo -180 0 -30 "pCylinder11";
+		move -r -os -wd -2.115 0.222 0 "pCylinder12";
+		
+		//Right Leg Front
+		$dumpArray = `polyCylinder -r 0.05 -h 1 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polyCylinder -r 0.05 -h 1 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polyCylinder -r 0.05 -h 0.35 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		
+		//Right Leg Front Transformations
+		move -r -os -wd -1.1 1.1 0.446 "pCylinder13";
+		rotate -r -os -fo -150 0 60 "pCylinder13";
+		move -r -os -wd -1.783 0.89 0.892 "pCylinder14";
+		rotate -r -os -fo 160.825 22.405 -38.603 "pCylinder14";
+		move -r -os -wd -2.061 0.222 1.058 "pCylinder15";
+		
+		//Right Leg Back
+		$dumpArray = `polyCylinder -r 0.05 -h 1 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polyCylinder -r 0.05 -h 1 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polyCylinder -r 0.05 -h 0.35 -sx 8 -sy 1 -sz 1 -ax 0 1 0 -rcp 1 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		
+		//Right Leg Back Transformations
+		move -r -os -wd -1.1 1.1 -0.4 "pCylinder16";
+		rotate -r -os -fo 150 0 60 "pCylinder16";
+		move -r -os -wd -1.772 0.88 -0.842 "pCylinder17";
+		rotate -r -os -fo -162.462 -0.866 -30.29 "pCylinder17";
+		move -r -os -wd -2.03 0.222 -0.995 "pCylinder18";
+		
+		//Face
+		$dumpArray = `polySphere -r 0.06 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polySphere -r 0.06 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polySphere -r 0.03 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polySphere -r 0.03 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polyCone -r 0.525 -h 1.041 -sx 20 -sy 1 -sz 0 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		$dumpArray = `polyCone -r 0.525 -h 1.041 -sx 20 -sy 1 -sz 0 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1`;
+		$allGeo[size($allGeo)] = $dumpArray[0];
+		
+		//Face Transformations
+		move -r -os -wd 0.05 1.09 1.468 "pSphere3";
+		rotate -r -os -fo 90 0 0 "pSphere3";
+		move -r -os -wd -0.05 1.09 1.468 "pSphere4";
+		rotate -r -os -fo 90 0 0 "pSphere4";
+		move -r -os -wd 0.125 1.145 1.451 "pSphere5";
+		rotate -r -os -fo 90 0 0 "pSphere5";
+		move -r -os -wd -0.125 1.145 1.451 "pSphere6";
+		rotate -r -os -fo 90 0 0 "pSphere6";
+		move -r -os -wd -0.157 0.819 1.446 "pCone1";
+		rotate -r -os -fo 174.735 -15.124 0 "pCone1";
+		scale -r -os 0.12 0.12 0.029 "pCone1";
+		move -r -os -wd 0.157 0.819 1.446 "pCone2";
+		rotate -r -os -fo 174.735 15.124 0 "pCone2";
+		scale -r -os 0.12 0.12 0.029 "pCone2";
+	
+		polyUnite -n "Spider" $allGeo;
+		
+		DeleteAllHistory;
+		
+		parent -r "Spider" "Geometry";
+		
+		select -cl;
+	}
+	
+	if (!objExists("Geometry"))
+		{
+			group -em -n "Geometry";
+		}
+	
+	if (objExists("Spider") && objExists("Geometry"))
+	{
+		parent -r "Spider" "Geometry";
+	}
+}
