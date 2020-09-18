@@ -1,0 +1,119 @@
+proc float Add(float $floats[])
+{
+	float $sum = $floats[0];
+
+	for ($i = 1; $i < size($floats); ++$i)
+	{
+		$sum += $floats[$i];
+	}
+	
+	return $sum;
+}
+
+proc float Subtract(float $floats[])
+{
+	float $sum = $floats[0];
+
+	for ($i = 1; $i < size($floats); ++$i)
+	{
+		$sum -= $floats[$i];
+	}
+	
+	return $sum;
+}
+
+proc float Divide(float $floats[])
+{
+	float $sum = $floats[0];
+
+	for ($i = 1; $i < size($floats); ++$i)
+	{
+		$sum /= $floats[$i];
+	}
+	
+	return $sum;
+}
+
+proc float Multiply(float $floats[])
+{
+	float $sum = $floats[0];
+
+	for ($i = 1; $i < size($floats); ++$i)
+	{
+		$sum *= $floats[$i];
+	}
+	
+	return $sum;
+}
+
+proc float Power(float $argOne, float $argTwo)
+{
+	float $sum = $argOne;
+	
+	for ($i = 1; $i < $argTwo; ++$i)
+	{
+		$sum *= $argOne;
+	}
+	
+	return $sum;
+}
+
+proc float Mean(float $floats[])
+{
+	float $sum = $floats[0];
+
+	for ($i = 1; $i < size($floats); ++$i)
+	{
+		$sum += $floats[$i];
+	}
+	
+	$sum /= size($floats);
+	return $sum;
+}
+
+proc float Median(float $floats[])
+{
+    float $sortedArray[] = `sort $floats`;
+	float $sum;
+	
+	if (size($sortedArray) % 2 == 0) //Even number
+	{
+		$sum = ($sortedArray[(size($floats) + 1) / 2] + $sortedArray[(size($floats) - 1) / 2]) / 2;
+	}
+	else //Odd number
+	{
+		$sum = $sortedArray[size($floats) / 2];
+	}
+	
+	return $sum;
+}
+
+proc float Mode(float $floats[])
+{
+	float $modeNum = $floats[0];
+	float $repeatCounter = 0;
+	float $currentTop = 0;
+	
+	for ($i = 0; $i < size($floats); ++$i)
+	{
+		for ($t = $i; $t < size($floats); ++$t)
+		
+		{
+			if ($i != $t && $floats[$i] == $floats[$t])
+			{
+				$repeatCounter++;
+				
+				if ($repeatCounter >= $currentTop)
+				{
+					$modeNum = $floats[$i];
+				}
+				
+				$currentTop = $repeatCounter;
+			}
+			
+			$repeatCounter = 0;
+		}
+	}
+	
+	return $modeNum;
+}
