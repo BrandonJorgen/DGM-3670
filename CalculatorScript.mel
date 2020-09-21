@@ -96,22 +96,20 @@ proc float Mode(float $floats[])
 	
 	for ($i = 0; $i < size($floats); ++$i)
 	{
+	    $repeatCounter = 0;
+	    
 		for ($t = $i; $t < size($floats); ++$t)
-		
 		{
-			if ($i != $t && $floats[$i] == $floats[$t])
+			if ($floats[$i] == $floats[$t])
 			{
 				$repeatCounter++;
 				
 				if ($repeatCounter >= $currentTop)
 				{
 					$modeNum = $floats[$i];
+					$currentTop = $repeatCounter;
 				}
-				
-				$currentTop = $repeatCounter;
 			}
-			
-			$repeatCounter = 0;
 		}
 	}
 	
