@@ -1,52 +1,110 @@
-proc float Add(float $floats[])
+proc float Calculator(float $nums[], string $operation)
+{
+	if ($operation == "Add")
+	{
+		return Addition($nums);
+	}
+	
+	if ($operation == "Subtract")
+	{
+		return Subtraction($nums);
+	}
+	
+	if ($operation == "Divide")
+	{
+		return Division($nums);
+	}
+	
+	if ($operation == "Multiply")
+	{
+		return Multiplication($nums);
+	}
+	
+	if ($operation == "Power" && size($nums) == 2)
+	{
+		return PowerOf($nums[0], $nums[1]);
+	}
+	
+	if ($operation == "Power" && size($nums) != 2)
+	{
+		print "The Power function requires 2 integers";
+	}
+	
+	if ($operation == "Mean")
+	{
+		return Mean($nums);
+	}
+	
+	if ($operation == "Median")
+	{
+		return Median($nums);
+	}
+	
+	if ($operation == "Mode")
+	{
+		return Mode($nums);
+	}
+}
+
+proc float Addition(float $floats[])
 {
 	float $sum = $floats[0];
+	string $statement = $floats[0];
 
 	for ($i = 1; $i < size($floats); ++$i)
 	{
 		$sum += $floats[$i];
+		$statement = $statement + " + " + $floats[$i];
 	}
-	
+	print ($statement + " = " + $sum + "\n");
 	return $sum;
 }
 
-proc float Subtract(float $floats[])
+proc float Subtraction(float $floats[])
 {
 	float $sum = $floats[0];
+	string $statement = $floats[0];
 
 	for ($i = 1; $i < size($floats); ++$i)
 	{
 		$sum -= $floats[$i];
+		$statement = $statement + " - " + $floats[$i];
 	}
-	
+	print ($statement + " = " + $sum + "\n");
 	return $sum;
 }
 
-proc float Divide(float $floats[])
+proc float Division(float $floats[])
 {
 	float $sum = $floats[0];
+	string $statement = $floats[0];
 
 	for ($i = 1; $i < size($floats); ++$i)
 	{
 		$sum /= $floats[$i];
+		$statement = $statement + " / " + $floats[$i];
 	}
 	
+	print ($statement + " = " + $sum + "\n");
 	return $sum;
 }
 
-proc float Multiply(float $floats[])
+proc float Multiplication(float $floats[])
 {
 	float $sum = $floats[0];
+	string $statement = $floats[0];
 
 	for ($i = 1; $i < size($floats); ++$i)
 	{
 		$sum *= $floats[$i];
+		$statement = $statement + " * " + $floats[$i];
 	}
 	
+	print ($statement + " = " + $sum + "\n");
 	return $sum;
 }
 
-proc float Power(float $argOne, float $argTwo)
+proc float PowerOf(float $argOne, float $argTwo)
 {
 	float $sum = $argOne;
 	
@@ -55,6 +113,8 @@ proc float Power(float $argOne, float $argTwo)
 		$sum *= $argOne;
 	}
 	
+	string $statement = $argOne + " ^ " + $argTwo + " = " + $sum + "\n";
+	print $statement;
 	return $sum;
 }
 
@@ -115,3 +175,5 @@ proc float Mode(float $floats[])
 	
 	return $modeNum;
 }
+
+Calculator({2,2}, "Power");
