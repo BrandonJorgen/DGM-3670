@@ -1,0 +1,15 @@
+proc changeControlColors()
+{
+    string $controlArray[] = {};
+    
+	$controlArray = `ls -sl`;
+	
+	for ($i = 0; $i < size($controlArray); $i++)
+	{
+	    string $shapes[0] = `listRelatives -s $controlArray[$i]`;
+	    setAttr ($shapes[0] + ".overrideEnabled", 1);
+	    setAttr ($shapes[0] + ".overrideColor", 4);
+	}
+}
+
+changeControlColors;
