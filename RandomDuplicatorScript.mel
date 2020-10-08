@@ -1,0 +1,29 @@
+proc randomDuplication(int $dupeAmount, float $minX, float $maxX, float $minY, float $maxY, float $minZ, float $maxZ)
+{
+	string $selection[] = `ls -sl`;
+	string $objs[] = {};
+	
+	//should probably move the initial objects to a spot first
+	
+	//duplication code
+	for ($o in $selection)
+	{
+		for ($i = 0; $i < $dupeAmount; $i++)
+		{
+			$objs = `duplicate $o`;
+			
+			//find random position (x,y,z)
+			float $xPosition = `rand $minX $maxX`;
+			$xPosition = `trunc $xPosition`;
+			float $yPosition = `rand $minY $maxY`;
+			$yPosition = `trunc $yPosition`;
+			float $zPosition = `rand $minZ $maxZ`;
+			$zPosition = `trunc $zPosition`;
+			
+			//move duplicated obj to random position using world
+			xform -ws -t $xPosition $yPosition $zPosition $objs;
+		}
+	}
+}
+
+randomDuplication(4,0,12,0,5,0,12);
