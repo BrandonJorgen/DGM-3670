@@ -6,17 +6,14 @@ def RenameObject(name_format):
     current_sel_count = 1
     for obj in selection:
         num_of_hash = name_format.count("#")
-        obj_partition = name_format.partition("#" * num_of_hash)
-        sequence_string = str(current_sel_count)
-        cmds.select(obj)
-
-        if current_sel_count < 10:
-            sequence_string = sequence_string.zfill(2)
+        if num_of_hash > 0:
+            obj_partition = name_format.partition("#" * num_of_hash)
+            sequence_string = str(current_sel_count)
+            cmds.select(obj)
+            sequence_string = sequence_string.zfill(num_of_hash)
             cmds.rename(obj_partition[0] + sequence_string + obj_partition[2])
-        else:
             cmds.rename(obj_partition[0] + sequence_string + obj_partition[2])
-
-        current_sel_count += 1
+            current_sel_count += 1
 
 
 RenameObject("Leg_##_Jnt")
