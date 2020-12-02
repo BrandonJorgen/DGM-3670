@@ -6,49 +6,50 @@ class RandomPlacement():
     def __init__(self):
         self.created_window = "bjWindow"
 
-    def randomDuplication(self, dupeAmount, minX, maxX, minY, maxY, minZ, maxZ):
+    def randomDuplication(self, dupeamount, minx, maxx, miny, maxy, minz, maxz):
+        dupeamount = cmds.intField(self.dupeAmountInput, q=True, value=True)
+        minx = cmds.intField(self.minXInput, q=True, value=True)
+        maxx = cmds.intField(self.maxXInput, q=True, value=True)
+        miny = cmds.intField(self.minYInput, q=True, value=True)
+        maxy = cmds.intField(self.maxYInput, q=True, value=True)
+        minz = cmds.intField(self.minZInput, q=True, value=True)
+        maxz = cmds.intField(self.maxZInput, q=True, value=True)
         selection = cmds.ls(selection=True)
         objs = []
-        dupeAmount = cmds.intSlider(self.dupeAmountSlider, q=True, value=True)
-        minX = cmds.intSlider(self.minXSlider, q=True, value=True)
-        maxX = cmds.intSlider(self.maxXSlider, q=True, value=True)
-        minY = cmds.intSlider(self.minYSlider, q=True, value=True)
-        maxY = cmds.intSlider(self.maxYSlider, q=True, value=True)
-        minZ = cmds.intSlider(self.minZSlider, q=True, value=True)
-        maxZ = cmds.intSlider(self.maxZSlider, q=True, value=True)
 
         for obj in selection:
-            for dupeObj in range(0, dupeAmount):
+            for dupeObj in range(0, dupeamount):
                 objs = cmds.duplicate(obj)
-                cmds.xform(objs, ws=True, t=(random.uniform(minX, maxX), random.uniform(minY, maxY), random.uniform(minZ, maxZ)))
-
+                cmds.xform(objs, ws=True, t=(random.uniform(minx, maxx),
+                                             random.uniform(miny, maxy),
+                                             random.uniform(minz, maxz)))
 
     def CreateWindow(self):
         self.DeleteWindow()
 
         self.window = cmds.window(self.created_window, title="Random Placement Window", widthHeight=(400, 200))
-        self.column = cmds.rowColumnLayout(parent=self.window, numberOfColumns=3)
+        self.column = cmds.rowColumnLayout(parent=self.window, numberOfColumns=2)
         cmds.text(parent=self.column, label="Duplication amount: ")
-        self.dupeAmountSlider = cmds.intSlider(min=1, max=100, value=1, step=1)
+        self.dupeAmountInput = cmds.intField(parent=self.column, minValue=-100, maxValue=100, value=1)
         cmds.text(parent=self.column, label="Min X: ")
-        self.minXSlider = cmds.intSlider(min=0, max=12, value=0, step=1)
-        self.minXValue = cmds.text(parent=self.column, label="value")
+        self.minXInput = cmds.intField(parent=self.column, minValue=-100, maxValue=100, value=0)
         cmds.text(parent=self.column, label="Max X: ")
-        self.maxXSlider = cmds.intSlider(min=0, max=12, value=0, step=1)
-        self.maxXValue = cmds.text(parent=self.column, label="value")
+        self.maxXInput = cmds.intField(parent=self.column, minValue=-100, maxValue=100, value=0)
         cmds.text(parent=self.column, label="Min Y: ")
-        self.minYSlider = cmds.intSlider(min=0, max=12, value=0, step=1)
-        self.minYValue = cmds.text(parent=self.column, label="value")
+        self.minYInput = cmds.intField(parent=self.column, minValue=-100, maxValue=100, value=0)
         cmds.text(parent=self.column, label="Max Y: ")
-        self.maxYSlider = cmds.intSlider(min=0, max=12, value=0, step=1)
-        self.maxYValue = cmds.text(parent=self.column, label="value")
+        self.maxYInput = cmds.intField(parent=self.column, minValue=-100, maxValue=100, value=0)
         cmds.text(parent=self.column, label="Min Z: ")
-        self.minZSlider = cmds.intSlider(min=0, max=12, value=0, step=1)
-        self.minZValue = cmds.text(parent=self.column, label="value")
+        self.minZInput = cmds.intField(parent=self.column, minValue=-100, maxValue=100, value=0)
         cmds.text(parent=self.column, label="Max Z: ")
-        self.maxZSlider = cmds.intSlider(min=0, max=12, value=0, step=1)
-        self.maxZValue = cmds.text(parent=self.column, label="value")
-        cmds.button(parent=self.column, label="Execute", c=self.randomDuplication)
+        self.maxZInput = cmds.intField(parent=self.column, minValue=-100, maxValue=100, value=0)
+        cmds.button(parent=self.column, label="Execute", c=lambda *x: self.randomDuplication(dupeamount=self.dupeAmountInput,
+                                                                                             minx=self.minXInput,
+                                                                                             maxx=self.maxXInput,
+                                                                                             miny=self.minYInput,
+                                                                                             maxy=self.maxYInput,
+                                                                                             minz=self.minZInput,
+                                                                                             maxz=self.maxXInput))
         cmds.showWindow(self.window)
 
     def DeleteWindow(self):
