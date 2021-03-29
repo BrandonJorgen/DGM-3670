@@ -8,7 +8,7 @@ class Toolbox():
     def CreateWindow(self):
         self.DeleteWindow()
 
-        self.window = cmds.window(self.created_window, title="BJ's Toolkit", widthHeight=(400, 200))
+        self.window = cmds.window(self.created_window, title="BJ's Toolkit", widthHeight=(400, 250))
         self.column = cmds.rowColumnLayout(parent=self.window, adjustableColumn=True)
         cmds.button(parent=self.column, label="Rename Object Tool", c=lambda *x: self.RenamerWindow())
         cmds.button(parent=self.column, label="Random Placement Tool", c=lambda *x: self.RandomPlacementWindow())
@@ -17,6 +17,10 @@ class Toolbox():
         cmds.button(parent=self.column, label="Create Parent Group", c=lambda *x: self.CreateParentGroup())
         cmds.button(parent=self.column, label="Parent/Scale Constraint", c=lambda *x: self.ConstrainObjsCall())
         cmds.button(parent=self.column, label="Toggle Joint Orientation Axis", c=lambda *x: self.AxisOrientationEnableCall())
+        cmds.button(parent=self.column, label="Create Circle Control", c=lambda *x: self.CreateCircleControl())
+        cmds.button(parent=self.column, label="Follow Attribute Constraints", c=lambda *x: self.CreateFollowAttributeConstraints())
+        cmds.button(parent=self.column, label="Create ID Map Materials", c=lambda *x: self.CreateIDMapMaterials())
+        cmds.button(parent=self.column, label="Create IKFK Switch", c=lambda *x: self.CreateIKFKSwitch())
         cmds.showWindow(self.window)
 
     def DeleteWindow(self):
@@ -64,6 +68,31 @@ class Toolbox():
         reload(EnableJointOrientationAxis)
         Function = EnableJointOrientationAxis.JointOrientationAxis()
         Function.Toggle()
+
+    def CreateCircleControl(self):
+        import CircleJointControl
+        reload(CircleJointControl)
+        Function = CircleJointControl.CircleJointControl()
+        Function.CreateControl()
+
+    def CreateFollowAttributeConstraints(self):
+        import FollowAttributeConstraints
+        reload(FollowAttributeConstraints)
+        Function = FollowAttributeConstraints.FollowAttributeConstraints()
+        Function.Main()
+
+    def CreateIDMapMaterials(self):
+        import CreateIDMapMaterials
+        reload(CreateIDMapMaterials)
+        Function = CreateIDMapMaterials.CreateIDMapMaterials()
+        Function.CreateMaterials()
+
+    def CreateIKFKSwitch(self):
+        import IKFKSwitch
+        reload(IKFKSwitch)
+        Function = IKFKSwitch.IKFKSwitch()
+        Function.Main()
+
 
 
 created_window = Toolbox()
